@@ -1,0 +1,32 @@
+﻿@model FinalProject.Models.User
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@if (Session["SESSION_GROUP"] != null)
+{
+    List<string> privilegeLevels = (List<string>)Session["SESSION_GROUP"];
+
+    if (privilegeLevels[0].CompareTo("Admin") == 0)
+    {
+        <div class="container-fluid mr-5">
+            <h3>Sửa User</h3>
+            <form action="~/Admin/User/Edit" method="post">
+                <div class="form-group">
+                    <label>Mã User:</label>
+                    @Html.TextAreaFor(x => x.MaUser, new { @class = "form-control", @readonly = "readonly" })
+
+                    <label>Username:</label>
+                    <input type="text" class="form-control" value="@Model.Username" id="Username" name="Username" />
+
+                    <label>Password:</label>
+                    <input type="text" class="form-control" value="@Model.password" id="Password" name="Password" />
+
+                    <label>Mã Group:</label>
+                    <input type="number" class="form-control" value="@Model.MaGroup" id="MaGroup" name="MaGroup" />
+                </div>
+                <button class="btn btn-success" style="background-color: #007606 " type="submit">Lưu</button>
+            </form>
+        </div>
+    }
+}

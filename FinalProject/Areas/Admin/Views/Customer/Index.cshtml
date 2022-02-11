@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FinalProject.Models.KhachHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["SESSION_GROUP"] != null)
+{
+    List<string> privilegeLevels = (List<string>)Session["SESSION_GROUP"];
+
+    if (privilegeLevels[0].CompareTo("Admin") == 0 || privilegeLevels[0].CompareTo("Staff") == 0)
+    {
+        <div class="container-fluid mr-5">
+            <h3>Danh sách khách hàng</h3>
+            <a href="~/Admin/Customer/Add" class="btn btn-success" style="background-color: #007606 ">Thêm</a>
+            <form method="post" action="~/Admin/Customer/Index">
+                <table class="table table-bordered table-striped table-hover table-responsive-sm">
+                    <thead class="bg-success text-light">
+                        <tr>
+                            <th>Mã khách hàng</th>
+                            <th>Tên Khách hàng</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                            <th>Mã tài khoản</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CustomerID</td>
+                                <td>@item.ShipName</td>
+                                <td>@item.ShipMobile</td>
+                                <td>@item.ShipAddress</td>
+                                <td>@item.ShipEmail</td>
+                                <td>@item.MaUser</td>
+                                <td>@item.OrderID</td>
+                                <td><a href="~/Admin/Customer/Edit/@item.CustomerID">Sửa</a> | <a href="~/Admin/Customer/Delete/@item.CustomerID">Xóa</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    }
+}

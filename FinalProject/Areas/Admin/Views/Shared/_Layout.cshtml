@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Contents/bootstrap.css")
+    @Styles.Render("~/Contents/sb-admin-2.css")
+    @Styles.Render("~/Contents/style.css")
+    @Styles.Render("~/Contents/util.css")
+    @Styles.Render("~/fontawaresome/css/all.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!--Sidebar-->
+        <ul class="navbar-nav bg-success sidebar sidebar-dark accordion">
+
+            @if (Session["SESSION_GROUP"] != null)
+            {
+                List<string> privilegeLevels = (List<string>)Session["SESSION_GROUP"];
+
+                if (privilegeLevels[0].CompareTo("Admin") == 0)
+                {
+                    <!--Sidebar Brand-->
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Admin/HomeAdmin/Dashboard">
+                        <div class="sidebar-brand-icon rotate-n-15">
+                            <i class="fas fa-laugh-wink"></i>
+                        </div>
+                        <div class="sidebar-brand-text mx-3">HyperX Admin <sup><i class="fab fa-angular"></i></sup></div>
+                    </a>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+                    <!--Heading 1-->
+                    <div class="sidebar-heading">
+                        Quản lý sản phẩm
+                    </div>
+
+                    <!--Table Sản phẩm-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Product/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Sản phẩm</span>
+                        </a>
+                    </li>
+
+
+                    <!--Table Loại sản phẩm-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Category/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Loại sản phẩm</span>
+                        </a>
+                    </li>
+
+                    <!--Table Nhà cung cấp-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Manufacture/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Nhà cung cấp</span>
+                        </a>
+                    </li>
+
+                    <!--Table Kho hàng-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Warehouse/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Kho hàng</span>
+                        </a>
+                    </li>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+                    <!--Heading 2-->
+                    <div class="sidebar-heading">
+                        Quản lý bán hàng
+                    </div>
+
+                    <!--Table Hóa đơn-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Order/Index">
+                            <i class="fas fa-coins"></i>
+                            <span>Hóa đơn</span>
+                        </a>
+                    </li>
+
+                    <!--Table Khách hàng-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Customer/Index">
+                            <i class="far fa-user"></i>
+                            <span>Khách hàng</span>
+                        </a>
+                    </li>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+                    <!--Heading 3-->
+                    <div class="sidebar-heading">
+                        Quản lý tài khoản
+                    </div>
+
+                    <!--Table Tài khoản-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/User/Index">
+                            <i class="far fa-user"></i>
+                            <span>Tài khoản</span>
+                        </a>
+                    </li>
+
+                    <!--Table Loại tài khoản-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/UserGroup/Index">
+                            <i class="fas fa-users"></i>
+                            <span>Loại tài khoản</span>
+                        </a>
+                    </li>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-3">
+                    <hr class="sidebar-divider my-3">
+
+                    <a class="nav-link" style="text-align:center; color:white" href="~/Admin/Login/SignOut">
+                        <span>Đăng xuất</span>
+                    </a>
+
+                }
+                if (privilegeLevels[0].CompareTo("Staff") == 0)
+                {
+                    <!--Sidebar Brand-->
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Admin/HomeAdmin/Dashboard">
+                        <div class="sidebar-brand-icon rotate-n-15">
+                            <i class="fas fa-laugh-wink"></i>
+                        </div>
+                        <div class="sidebar-brand-text mx-3">HyperX Admin <sup><i class="fab fa-angular"></i></sup></div>
+                    </a>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+                    <!--Heading 1-->
+                    <div class="sidebar-heading">
+                        Quản lý sản phẩm
+                    </div>
+
+                    <!--Table Sản phẩm-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Product/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Sản phẩm</span>
+                        </a>
+                    </li>
+
+
+                    <!--Table Loại sản phẩm-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Category/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Loại sản phẩm</span>
+                        </a>
+                    </li>
+
+
+
+                    <!--Table Kho hàng-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Warehouse/Index">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Kho hàng</span>
+                        </a>
+                    </li>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+                    <!--Heading 2-->
+                    <div class="sidebar-heading">
+                        Quản lý bán hàng
+                    </div>
+
+                    <!--Table Hóa đơn-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Order/Index">
+                            <i class="fas fa-coins"></i>
+                            <span>Hóa đơn</span>
+                        </a>
+                    </li>
+
+                    <!--Table Khách hàng-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Customer/Index">
+                            <i class="far fa-user"></i>
+                            <span>Khách hàng</span>
+                        </a>
+                    </li>
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-0">
+
+
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-3">
+                    <hr class="sidebar-divider my-3">
+
+                    <a class="nav-link" style="text-align:center; color:white" href="~/Admin/Login/SignOut">
+                        <span>Đăng xuất</span>
+                    </a>
+                }
+                if (privilegeLevels[0].CompareTo("User") == 0)
+                {
+                    <!--Divider-->
+                    <hr class="sidebar-divider my-3">
+
+                    <a class="nav-link" style="text-align:center; color:white" href="~/Admin/Login/SignOut">
+                        <span>Đăng xuất</span>
+                    </a>
+                }
+            }
+
+
+
+        </ul>
+        <!--Main-->
+        <div id="content-wrapper" class="d-flex flex-col">
+            <div id="content">
+                <div class="container-fluid">
+
+
+                    <div class="row mt-4">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <a href="https://www.facebook.com/profile.php?id=100008818027034">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    FACEBOOK
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Trần Đạt</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fab fa-facebook fa-2x" style="color: blue"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <a href="https://www.youtube.com/channel/UC8H_NBRx5kj58ZxnC_ccA1w">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                    YOUTUBE
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Trần Đạt</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fab fa-youtube fa-2x" style="color:red"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-purple shadow h-100 py-2" style="color:rebeccapurple">
+                                <a href="https://github.com/hadesdat00">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:rebeccapurple">
+                                                    GITHUB
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Trần Đạt</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fab fa-github fa-2x" style="color:rebeccapurple"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

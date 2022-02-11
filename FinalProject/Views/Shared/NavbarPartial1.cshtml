@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FinalProject.Models.LoaiSanPham>
+
+@foreach (var item in Model)
+{
+    <li>
+        <hr class="dropdown-divider">
+    </li>
+    <li>
+        <a class="dropdown-item" style="color:black" href="~/Product/SubCategory/@item.MaLSP">@item.TenLSP</a>
+    </li>
+}
+

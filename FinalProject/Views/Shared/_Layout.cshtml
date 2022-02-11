@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Contents/bootstrap.css")
+    @Styles.Render("~/Contents/style.css")
+    @Styles.Render("~/Contents/util.css")
+    @Styles.Render("~/Contents/PagedList.css")
+    @Styles.Render("~/fontawaresome/css/all.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand order-0 order-lg-0 ml-lg-0 mr-auto" href="~/Home/Index" style="color: #FFFFFF"><img src="~/images/logo.png" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+                        <!--Trang chủ-->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="~/Home/Index" style="color: #FFFFFF">Trang chủ</a>
+                        </li>
+
+                        <!--Sản phẩm-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">Sản phẩm</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="~/Product/Category">Tất cả sản phẩm</a></li>
+                                @Html.Action("NavbarPartial1", "Product")
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">Thương hiệu</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="~/Product/Category">Tất cả sản phẩm</a></li>
+                                @Html.Action("NavbarPartial2", "Product")
+                            </ul>
+                        </li>
+                 
+                        <!--Blog-->
+                        <li class="nav-item"><a class="nav-link" style="color: #FFFFFF" href="~/Home/Blog">Tin tức</a></li>
+                        <!--Giới thiệu-->
+                        <li class="nav-item"><a class="nav-link" style="color: #FFFFFF" href="~/Home/About">Giới thiệu</a></li>
+                        <!--Liên hệ-->
+                        <li class="nav-item"><a class="nav-link" style="color: #FFFFFF" href="~/Home/Contact">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link" style="color: #FFFFFF" href="~/Cart/Index"><i class="fas fa-shopping-cart">Giỏ hàng</i></a></li>
+                    </ul>
+
+
+                    @using (Html.BeginForm("SearchResult", "Search"))
+                    {
+                        <div class="d-flex">
+                            <input class="form-control me-2" type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm...">
+                            <button class="btn btn-outline-light me-2" type="submit">Search</button>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </nav>
+
+
+
+
+        <div id="carouselSlide" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselSlide" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselSlide" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselSlide" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/banner-2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/banner-1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/banner-3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlide" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselSlide" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+
+    </header>
+
+    <div class="container ml-0 mr-0">
+        @RenderBody()
+        <hr />
+    </div>
+
+    <div class="support-online">
+        <a href="https://m.me/kidrasacai">
+            @*<i class="fab fa-facebook-messenger fa-2x" style="color: blue; width: 40px; height: 40px"></i>*@
+            <img class="_1-kh _93s6 img" src="https://bizweb.dktcdn.net/100/424/874/themes/817899/assets/facebook.png?1643104053119" style="width: 40px; height: 40px" alt="Messenger">
+        </a>
+        <a href="https://zalo.me/0339489228">
+            <img src="//bizweb.dktcdn.net/100/424/874/themes/817899/assets/zalo.png?1627706787161" alt="zalo">
+        </a>
+    </div>
+
+    <footer class="text-center text-lg-start text-dark footer">
+        <section class="d-flex justify-content-between p-4 text-white footer-section">
+            <!--Trái-->
+            <div class="me-5">
+                <span>Kết nối với chúng tôi trên các mạng xã hội:</span>
+            </div>
+            <!--Phải-->
+            <div>
+                <a href="https://www.facebook.com/kidrasacai" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/kidrasacai/?hl=vi" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/hadesdat00" class="text-white me-4">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold">HyperX</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto line-under-text" />
+                        <p>
+                            Chuyên cung cấp các dòng sneaker Jordan, Nike, Adidas đảm bảo chính hãng 100%.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Sản phẩm</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto line-under-text" />
+                        <p>
+                            <a href="~/Product/Category" class="text-dark">Tất cả sản phẩm</a>
+                        </p>
+                        @Html.Action("FooterPartial", "Product")
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Liên hệ</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p><i class="fas fa-home mr-3"></i> Sonadezi College</p>
+                        <p><i class="fas fa-address-card"></i> Trần Tiến Đạt</p>
+                        <p><i class="fas fa-envelope"></i> hadesdat00@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i> (+84)339 489 228</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+    </footer>
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @RenderSection("scripts", required: false)
+</body>
+
+
+</html>
+

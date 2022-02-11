@@ -1,0 +1,8 @@
+﻿@model IEnumerable<FinalProject.Models.NhaCungCap>
+
+@foreach (var item in Model)
+{
+    <p>
+        <a class="text-dark" href="~/Product/Brand/@item.MaNCC">@item.TenNCC</a>
+    </p>
+}

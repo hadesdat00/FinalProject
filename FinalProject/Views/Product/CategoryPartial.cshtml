@@ -1,0 +1,28 @@
+﻿@model IEnumerable<FinalProject.Models.LoaiSanPham>
+
+
+
+<ul class="sidebar">
+    <div>
+        <h2 class="title_module_arrow mb-2">DANH MỤC SẢN PHẨM</h2>
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" style="color:black" href="~/Product/Category">
+            <span class="title-sidebar">Tất cả sản phẩm</span>
+        </a>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link" style="color:black" href="~/Product/SubCategory/@item.MaLSP">
+                <span class="title-sidebar">@item.TenLSP</span>
+            </a>
+        </li>
+        @*<li class="nav-item">
+                @Html.ActionLink(item.TenLSP, "SubCategory", "Product", new { @id = item.MaLSP }, null)
+            </li>*@
+    }
+
+</ul>
+
+

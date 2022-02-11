@@ -1,0 +1,26 @@
+﻿@model FinalProject.Models.LoaiSanPham
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@if (Session["SESSION_GROUP"] != null)
+{
+    List<string> privilegeLevels = (List<string>)Session["SESSION_GROUP"];
+
+    if (privilegeLevels[0].CompareTo("Admin") == 0 || privilegeLevels[0].CompareTo("Staff") == 0)
+    {
+        <div class="container-fluid mr-5">
+            <h3>Sửa loại sản phẩm</h3>
+            <form action="~/Admin/Category/Edit" method="post">
+                <div class="form-group">
+                    <label>Mã loại sản phẩm:</label>
+                    @Html.TextAreaFor(x => x.MaLSP, new { @class = "form-control", @readonly = "readonly" })
+
+                    <label>Tên Group:</label>
+                    <input type="text" class="form-control" value="@Model.TenLSP" id="TenLSP" name="TenLSP" />
+                </div>
+                <button class="btn btn-success" style="background-color: #007606 " type="submit">Lưu</button>
+            </form>
+        </div>
+    }
+}

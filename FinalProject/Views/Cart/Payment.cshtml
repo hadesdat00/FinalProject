@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal Total = 0;
+}
+
+<div class="container mt-5">
+    <h1 class="text-center m-5">THANH TOÁN</h1>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-12">
+            @if (Model.Count > 0)
+            {
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Mã SP</th>
+                                <th>Tên SP</th>
+                                <th>Ảnh SP</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            @foreach (var item in Model)
+                            {
+                                Total += (Convert.ToDecimal(item.product.GiaBan * item.Quantity));
+                                <tr>
+                                    <td class="col-md-1"><strong>@item.product.ProductID</strong></td>
+                                    <td class="col-md-3 col-sm-3 text-center"><strong>@item.product.TenSP</strong></td>
+                                    <td class="col-md-2"><img src="~/images/sanpham/@item.product.image" style="height: 75px;" /></td>
+                                    <td><input type="number" readonly="readonly" class="txtQuantity" style="text-align:center" data-id="@item.product.ProductID" value="@item.Quantity" /></td>
+                                    <td class="col-md-2 col-sm-2 text-center"><strong>@item.product.GiaBan</strong></td>
+                                    <td class="col-md-2 col-sm-2 text-center"><strong>@(Convert.ToDecimal(item.product.GiaBan * item.Quantity).ToString("#,##0"))</strong></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><strong>Tổng tiền là:</strong></td>
+                            <td class="text-center"><strong>@Total</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row col-md-4">
+                    @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label>Người nhận</label>
+                            <input type="text" name="shipName" required class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Điện thoại</label>
+                            <input type="text" name="mobile" class="form-control" required maxlength="10" minlength="9" />
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" name="address" required class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-success btn-outline-warning">Gửi đơn hàng</button>
+                    }
+                </div>
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+            }
+        </div>
+    </div>
+</div>

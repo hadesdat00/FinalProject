@@ -1,0 +1,79 @@
+﻿@model List<FinalProject.Models.CartItem>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal Total = 0;
+}
+
+@section scripts{
+
+    <script src="~/Scripts/cartController.js"></script>
+}
+
+
+<div class="container mt-5">
+    <h1 class="text-center m-5">Giỏ hàng của bạn</h1>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-12">
+            @if (Model.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th><i class="fas fa-trash-alt" style="margin-left:18px;"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            Total += (Convert.ToDecimal(item.product.GiaBan * item.Quantity));
+                            <tr class="text-center">
+                                <td class="col-md-1"><strong>@item.product.ProductID</strong></td>
+                                <td class="col-md-3 text-left"><strong>@item.product.TenSP</strong></td>
+                                <td class="col-md-2"><img src="~/images/sanpham/@item.product.image" style="height: 75px;" /></td>
+                                <td class="col-md-1 col-sm-1 "><input type="number" class="txtQuantity form-control-color" style="text-align:center" data-id="@item.product.ProductID" value="@item.Quantity" /></td>
+                                <td class="col-md-2 col-sm-2 "><strong>@item.product.GiaBan</strong></td>
+                                <td class="col-md-2 col-sm-2 "><strong>@(Convert.ToDecimal(item.product.GiaBan * item.Quantity).ToString("#,##0"))</strong></td>
+                                <td class="col-md-1 col-sm-1 ">
+                                    <button type="button" class="btn btn-danger mt-2">
+                                        <a href="#" style="color:#FFFFFF; text-decoration:none" data-id="@item.product.ProductID" class="btn-delete">Xoá</a>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                        }
+
+                    </tbody>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-center"><strong>Tổng tiền là:</strong></td>
+                        <td class="text-center"><strong>@Total</strong></td>
+                    </tr>
+                </table>
+
+                <div class="col-md-12 col-sm-12 col-12">
+                    <button id="btnContinue" class="btn btn-dark btn-outline-dark col-md-2"><a href="#" style="color:#FFFFFF; text-decoration:none">Tiếp tục mua hàng</a></button>
+                    <button id="btnUpdate" class="btn btn-warning btn-outline-warning col-md-2"><a href="#" style="color:#FFFFFF; text-decoration:none">Cập nhật giỏ hàng</a></button>
+                    <button id="btnDeleteAll" class="btn btn-danger btn-outline-danger col-md-2"><a href="#" style="color:#FFFFFF; text-decoration:none">Xoá giỏ hàng</a></button>
+                    <button id="btnPayment" class="btn btn-success btn-outline-success col-md-2"><a href="#" style="color:#FFFFFF; text-decoration:none">Thanh toán</a></button>
+                </div>
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+            }
+        </div>
+    </div>
+</div>

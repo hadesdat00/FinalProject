@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="732ab3556079442cbae6814358510228" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalProjectDBModel.KhachHang" Width="1.5" PointX="10.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.KhoHang" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.Order" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.User" Width="1.5" PointX="8" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.UserGroup" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_KhachHang_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_KhachHang_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_SanPham_NhaCungCap" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_OrderDetail_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalProjectDBModel.FK_User_UserGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

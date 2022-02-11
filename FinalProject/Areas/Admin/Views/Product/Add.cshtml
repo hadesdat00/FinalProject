@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["SESSION_GROUP"] != null)
+{
+    List<string> privilegeLevels = (List<string>)Session["SESSION_GROUP"];
+
+    if (privilegeLevels[0].CompareTo("Admin") == 0 || privilegeLevels[0].CompareTo("Staff") == 0)
+    {
+        <div class="container-fluid mr-5">
+            <h3>Thêm sản phẩm</h3>
+            <form action="~/Admin/Product/Add" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="ProductID">Mã sản phẩm:</label>
+                    <input type="text" class="form-control" id="ProductID" name="ProductID" />
+
+                    <label>Tên sản phẩm:</label>
+                    <input type="text" class="form-control" id="TenSP" name="TenSP" />
+
+                    <label>Loại sản phẩm:</label>
+                    @Html.DropDownList("LoaiSP", null, new { @class = "form-control" })
+
+                    <label>Thương Hiệu:</label>
+                    @Html.DropDownList("ThuongHieu", null, new { @class = "form-control" })
+
+                    <label>Giá nhập:</label>
+                    <input type="number" class="form-control" id="GiaNhap" name="GiaNhap" />
+
+                    <label>Giá bán:</label>
+                    <input type="number" class="form-control" id="GiaBan" name="GiaBan" />
+
+                    <label>Số lượng:</label>
+                    <input type="text" class="form-control" id="SoLuong" name="SoLuong" />
+
+                    <label>Upload hình</label>
+                    <input type="file" id="uploadhinh" name="uploadhinh" accept="image/*" />
+                </div>
+                <button class="btn btn-success" style="background-color: #007606 " type="submit">Lưu</button>
+            </form>
+        </div>
+    }
+}

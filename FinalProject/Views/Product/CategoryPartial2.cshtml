@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FinalProject.Models.NhaCungCap>
+
+
+
+<ul class="sidebar">
+    <div>
+        <h2 class="title_module_arrow mb-2">THƯƠNG HIỆU</h2>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link" style="color:black" href="~/Product/Brand/@item.MaNCC">
+                <span class="title-sidebar">@item.TenNCC</span>
+            </a>
+        </li>
+        @*<li class="nav-item">
+                @Html.ActionLink(item.TenLSP, "SubCategory", "Product", new { @id = item.MaLSP }, null)
+            </li>*@
+    }
+
+</ul>
+
+

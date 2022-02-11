@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FinalProject.Models.NhaCungCap>
+
+@foreach (var item in Model)
+{
+    <li>
+        <hr class="dropdown-divider">
+    </li>
+    <li>
+        <a class="dropdown-item" style="color:black" href="~/Product/Brand/@item.MaNCC">@item.TenNCC</a>
+    </li>
+}
+

@@ -1,0 +1,372 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PagedList.IPagedList<FinalProject.Models.SanPham>
+@using PagedList.Mvc
+
+
+
+<div class="row mt-5">
+    <h1 class="list-product-title">SẢN PHẨM MỚI</h1>
+    <div class="list-product-subtitle">
+        <p>
+            <span>Danh sách sản phẩm</span>
+            <span class="float-end"><a href="~/Product/Category" class="text-dark">Xem thêm</a></span>
+        </p>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row row-pb-lg">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-12 text-center">
+                    <div class="card card-product mb-3 product-entry">
+                        <div class="product-img">
+                            <img class="card-img-top" src="~/images/sanpham/@item.image" alt="jordan-1">
+                            <p class="tag"><span class="new">New</span></p>
+                            <div class="cart">
+                                <p>
+                                    <span class="addtocart"><a href="/Cart/AddItem?productId=@item.ProductID&quantity=1" class="adtocart"><i class="fas fa-cart-plus"></i></a></span>
+                                    <span><a href="~/Product/ProductDetails/@item.ProductID"><i class="fas fa-eye"></i></a></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="desc line-clamp-2">
+                            <h3>@Html.ActionLink(item.TenSP, "ProductDetails", "Product", new { id = item.ProductID }, null)</h3>
+                        </div>
+                        <div class="desc">
+                            <p class="price"><span>$@(Convert.ToDecimal(item.GiaBan).ToString("#,##0"))</span></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <h1 class="blog-title">Blog</h1>
+</div>
+<div class="card bg-dark text-white blog">
+    <img src="~/images/footer.jpg" class="card-img" alt="...">
+    <div class="card-img-overlay">
+        <h5 class="card-title"><a href="~/Home/chitietblog" style="color:#FFFFFF;">Top 5 đôi sneaker đắt nhất thế giới</a></h5>
+        <p class="card-text">Giày sneakers có thể nói là một item không bao giờ lỗi mốt, cứ lâu lâu các hãng giày sneaker lại tung ra một thiết kế mới, điều này cũng kéo theo giá sneakers tăng cao. Hãy cùng điểm qua 5 đôi giày sneakers đắt nhất thế giới, đắt đến mức mua cả 1 ngôi biệt thự hạng sang ở Việt Nam nhé!</p>
+        <p class="card-text">Đăng bởi: Mr. Đạt</p>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row mt-5">
+    <h1 class="size-chart-table-title">Bảng Size</h1>
+</div>
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Size Nam</h5>
+            <table id="table-cc" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <th>US</th>
+                        <th>UK</th>
+                        <th>EU</th>
+                        <th>CM</th>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <th>5.5</th>
+                        <th>38.5</th>
+                        <th>24</th>
+                    </tr>
+                    <tr>
+                        <th>6.5</th>
+                        <th>6</th>
+                        <th>39</th>
+                        <th>24.5</th>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <th>6</th>
+                        <th>40</th>
+                        <th>25</th>
+                    </tr>
+                    <tr>
+                        <th>7.5</th>
+                        <th>6.5</th>
+                        <th>40.5</th>
+                        <th>25.5</th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <th>7</th>
+                        <th>41</th>
+                        <th>26</th>
+                    </tr>
+                    <tr>
+                        <th>8.5</th>
+                        <th>7.5</th>
+                        <th>42</th>
+                        <th>26.5</th>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <th>8</th>
+                        <th>42.5</th>
+                        <th>27</th>
+                    </tr>
+                    <tr>
+                        <th>9.5</th>
+                        <th>8.5</th>
+                        <th>43</th>
+                        <th>27.5</th>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <th>9</th>
+                        <th>44</th>
+                        <th>28</th>
+                    </tr>
+                    <tr>
+                        <th>10.5</th>
+                        <th>9.5</th>
+                        <th>44.5</th>
+                        <th>28.5</th>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <th>10</th>
+                        <th>45</th>
+                        <th>29</th>
+                    </tr>
+                    <tr>
+                        <th>11.5</th>
+                        <th>10.5</th>
+                        <th>45.5</th>
+                        <th>29.5</th>
+                    </tr>
+                    <tr>
+                        <th>12</th>
+                        <th>11</th>
+                        <th>46</th>
+                        <th>30</th>
+                    </tr>
+                    <tr>
+                        <th>12.5</th>
+                        <th>11.5</th>
+                        <th>47</th>
+                        <th>30.5</th>
+                    </tr>
+                    <tr>
+                        <th>13</th>
+                        <th>12</th>
+                        <th>47.5</th>
+                        <th>31</th>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Size Nữ</h5>
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <th>US</th>
+                        <th>UK</th>
+                        <th>EU</th>
+                        <th>CM</th>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <th>2.5</th>
+                        <th>35.5</th>
+                        <th>22</th>
+                    </tr>
+                    <tr>
+                        <th>5.5</th>
+                        <th>3</th>
+                        <th>36</th>
+                        <th>22.5</th>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <th>3.5</th>
+                        <th>36.5</th>
+                        <th>23</th>
+                    </tr>
+                    <tr>
+                        <th>6.5</th>
+                        <th>4</th>
+                        <th>37.5</th>
+                        <th>23.5</th>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <th>4.5</th>
+                        <th>38</th>
+                        <th>24</th>
+                    </tr>
+                    <tr>
+                        <th>7.5</th>
+                        <th>5</th>
+                        <th>38.5</th>
+                        <th>24.5</th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <th>5.5</th>
+                        <th>39</th>
+                        <th>25</th>
+                    </tr>
+                    <tr>
+                        <th>8.5</th>
+                        <th>6</th>
+                        <th>40</th>
+                        <th>25.5</th>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <th>6.5</th>
+                        <th>40.5</th>
+                        <th>26</th>
+                    </tr>
+                    <tr>
+                        <th>9.5</th>
+                        <th>7</th>
+                        <th>41</th>
+                        <th>26.5</th>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <th>7.5</th>
+                        <th>42</th>
+                        <th>27</th>
+                    </tr>
+                    <tr>
+                        <th>10.5</th>
+                        <th>8</th>
+                        <th>42.5</th>
+                        <th>27.5</th>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <th>8.5</th>
+                        <th>43</th>
+                        <th>28</th>
+                    </tr>
+                    <tr>
+                        <th>11.5</th>
+                        <th>9</th>
+                        <th>44</th>
+                        <th>28.5</th>
+                    </tr>
+                    <tr>
+                        <th>12</th>
+                        <th>9.5</th>
+                        <th>44.5</th>
+                        <th>29</th>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Size Trẻ Em</h5>
+            <table style="width: 100%;">
+
+                <tbody>
+                    <tr id="row-table">
+                        <th>US</th>
+                        <th>UK</th>
+                        <th>EU</th>
+                        <th>CM</th>
+                    </tr>
+                    <tr>
+                        <th>3.5</th>
+                        <th>3</th>
+                        <th>35.5</th>
+                        <th>22.5</th>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <th>3.5</th>
+                        <th>36</th>
+                        <th>23</th>
+                    </tr>
+                    <tr>
+                        <th>4.5</th>
+                        <th>4</th>
+                        <th>36.5</th>
+                        <th>23.5</th>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <th>4.5</th>
+                        <th>37.5</th>
+                        <th>23.5</th>
+                    </tr>
+                    <tr>
+                        <th>5.5</th>
+                        <th>5</th>
+                        <th>38</th>
+                        <th>24</th>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <th>5.5</th>
+                        <th>38.5</th>
+                        <th>24</th>
+                    </tr>
+                    <tr>
+                        <th>6.5</th>
+                        <th>6</th>
+                        <th>39</th>
+                        <th>24.5</th>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <th>6.5</th>
+                        <th>40</th>
+                        <th>25</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-xl-5">
+    <div class="col-lg-6 text-center">
+        <div class="section-title">
+            <h1>Thương hiệu nổi bật</h1>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row mt-lg-5">
+            <div class="col-md-4">
+                <a href="~/Product/Brand/ADI001">
+                    <img src="~/images/logo-adidas.jpg" />
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="~/Product/Brand/NKE001">
+                    <img src="~/images/logo-nike.jpg" />
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="~/Product/Brand/JOR001">
+                    <img src="~/images/logo-jordan.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
